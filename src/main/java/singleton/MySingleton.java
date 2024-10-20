@@ -5,21 +5,30 @@ package singleton;
 2. we can use keyword synchronized in getObject in case if multiple threads are trying to invoke getObject. This will ensure thread safty.
  */
 public class MySingleton {
+    int state;
 
     private static MySingleton mySingleton;
 
     private MySingleton(){
-
+        this.state = 0;
     }
 
     public static MySingleton getObject() {
         if(mySingleton == null) {
-            mySingleton = new MySingleton();
+            synchronized (MySingleton.class) {
+                if(mySingleton == null) {
+                    mySingleton = new MySingleton();
+                }
+            }
         }
         return mySingleton;
     }
 
-    public void printIt() {
-        System.out.println("This is MySingleton");
+    public void printState() {
+        System.out.println("State: " + state);
+    }
+
+    public void increaseState() {
+        this.state++;
     }
 }
