@@ -2,7 +2,7 @@ package singleton;
 
 /*
 1. It allows creation of only one object
-2. we can use keyword synchronized in getObject in case if multiple threads are trying to invoke getObject. This will ensure thread safty.
+2. we can use keyword synchronized in getObject in case if multiple threads are trying to invoke getObject. This will ensure thread safety.
  */
 public class MySingleton {
     int state;
